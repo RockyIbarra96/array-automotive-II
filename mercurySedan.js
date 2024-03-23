@@ -24,7 +24,17 @@ class Car extends VehicleModule.Vehicle {
         this.scheduleService = false;
     }
     loadPassenger(num) {
-
+        if(this.passenger <= this.maxPassengers){
+            if((num + this.passenger) <= this.maxPassengers){
+                this.passenger = num;
+                return this.passenger;
+            
+            } else {
+                console.log(`${this.model} ${this.make} does not have enough space to take all passengers`);
+            }
+        } else {
+            console.log(`${this.model} ${this.make} is full`);
+        }
     }
     start() {
         if(this.fuel > 0){
@@ -50,7 +60,12 @@ class Car extends VehicleModule.Vehicle {
 
 
 //TO DO: Creating Instances and Testing Them
+let myCar = new Car('kia', 'soul', '2023', 'Red', '12000')
+myCar.start()
+myCar.loadPassenger()
+myCar.scheduleService()
 
+console.log(myCar)
 //You can use the same instance "v" of the Vehicle class above for the base class.
 
 
